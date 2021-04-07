@@ -1,38 +1,319 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.app {
+  min-height: 100%;
+}
+
+/* Header */
+.header {
+  z-index: 20;
+  display: flex;
+  position: relative;
+  align-items: center;
+  top: 0;
+  height: 10vh;
+  background-color: #4682b4;
+}
+
+.header__title {
+  font-size: 2em;
+  font-family: 'Dancing Script', cursive;
+  margin: 0;
+  margin-left: .5em;
+  color: #61dafb;
+  cursor: default;
+}
+
+.header__container-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  margin-left: auto;
+  height: 100%;
+}
+
+.header__button {
+  font-family: 'Roboto', monospace;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  margin-right: .2em;
+  padding-left: .5em;
+  padding-right: .5em;
+  border-radius: 2px;
+  color: #f5f5dc;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.header__button:hover {
+  background-color: #C0C0C033;
+}
+
+/* Main */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height:  90vh;
+  background-color: #4682b4;
+}
+
+.main__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20vmin;
+  animation: movementIMG 30s infinite ease-in;
+}
+
+@keyframes movementIMG {
+  0% {
+    transform: translate(0) rotate(0)
+  }
+  12% {
+    transform: translate(calc(50vw - 50%), calc(50vh - 20vmin))  rotate(360deg)
+  }
+  36% {
+    transform: translate(calc(-50vw + 50%), calc(-50vh + 20vmin)) rotate(1080deg)
+  }
+  48% {
+    transform: translate(0) rotate(720deg)
+  }
+  60% {
+    transform: translate(calc(-50vw + 50%), calc(50vh - 20vmin)) rotate(360deg)
+  }
+  84% {
+    transform: translate(calc(50vw - 50%), calc(-50vh + 20vmin)) rotate(-360deg)
+  }
+  96% {
+    transform: translate(0) rotate(0);
+  }
+}
+
+.main__info-container {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;;
+  padding: 0 2em;
+  overflow-y: hidden;
+}
+
+.main__info-container--hide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: hideMainSection 1s ease-in forwards;
+}
+
+.main__info-container--show {
+  position: relative;
+  animation: showMainSection 1s ease-in forwards;
+}
+
+.main__guide-container {
+  z-index: 10;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: .5em;
+  border-radius: 2px;
+  background-image: linear-gradient(to bottom, #4682b4 0%, #20b2aa 20%, #f08080);
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.main__guide-container::-webkit-scrollbar {
+  width: .5em;
+}
+
+.main__guide-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ffffe0;
+}
+
+.main__guide-container--hide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: hideMainSection 1s ease-in forwards;
+}
+
+.main__guide-container--show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: showMainSection 1s ease-in forwards;
+}
+
+@keyframes hideMainSection {
+  0% {
+    transform:  translateX(0)
+  }
+  30% {
+    transform: translateX(-5%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes showMainSection {
+  0% {
+    transform:  translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(-105%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.main__title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3em;
+  font-weight: bold;
+  margin: 0;
+  color: #f5f5dc;
+}
+
+.main__info {
+  font-size: 1.5em;
+  text-align: center;
+  color: #C0C0C0
+}
+
+.info__paragraph {
+  margin: .3em;
+}
+
+.guide-item {
+  flex: 1;
+  font-size: 1.5em;
+  margin: .1em;
+  padding: 2em 0;
+  color: #ffffe0;
+  box-shadow: 0 0 4px 2px #666;
+  text-align: center;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+  transition: box-shadow .3s;
+}
+
+.guide-item:nth-child(1) {
+  flex-basis: 100%;
+  background-color: #f08080;
+}
+
+.guide-item:nth-child(3) {
+  background-color: #ffb6c1;
+}
+
+.guide-item:nth-child(4) {
+  background-color: #ff7f50;
+}
+
+.guide-item:nth-child(7) {
+  flex-basis: 100%;
+  background-color: #5f9ea0;
+}
+
+.guide-item:nth-child(9) {
+  background-color: #add8e6;
+}
+
+.guide-item:nth-child(10) {
+  background-color: #7fffd4;
+}
+
+.guide-item:nth-child(13) {
+  flex-basis: 100%;
+  background-color: #00ffff;
+}
+
+.guide-item:hover {
+  box-shadow: 4px 4px 4px 2px #008b8b;
+}
+
+.guide-text {
+  position: absolute;
+  visibility: hidden;
+  flex-basis: 100%;
+  margin: 0 1em .5em;
+  padding: 0 1em 1em;
+  background-color: #708090;
+  color: #C0C0C0;
+  opacity: .3;
+  box-shadow: 2px 2px 4px 2px #666;
+  box-sizing: border-box;
+  transition: opacity 1s;
+}
+
+.guide-text--on {
+  position: static;
+  visibility: visible;
+  opacity: .9;
+}
+
+.guide-text__title {
+  font-size: 2em;
+  margin-top: .5em;
+  color: #fffafa;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.guide-text__content {
+  font-size: 1em;
+  margin: 1em 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.content__paragraph {
+  margin: .2em 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.guide-text__quotes {
+  font-size: .8em;
+  font-family: cursive;
+  padding: .3em 1em;
+  border-left: .3em solid #40e0d0;
+  background-color: #333;
+  color: #4682B4;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hide {
+  display: none;
 }
